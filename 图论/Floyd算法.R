@@ -1,3 +1,8 @@
+#' find the shortest way bewteen two unfixed points
+#' take in any Orient Destination matrix in this function to Floyd it.
+#' @param M A OD matrix to be Floyd
+#' @return Floyd M
+#' @export 
 ##Floyd算法 是图论最短路问题3算法中经典算法之一
 ##完成的太仓促了 很多说明还没有时间写，希望大家一起啊
 Floyd<- function(M){
@@ -35,3 +40,4 @@ for(k in 1:n){
 M最终<- M
 M最终
 }
+## example: D<- matrix(c(0,2,8,1,Inf,Inf,Inf,Inf,2,0,6,Inf,1,Inf,Inf,Inf,8,6,0,7,5,1,2,Inf,1,Inf,7,0,Inf,Inf,9,Inf,Inf,1,5,Inf,0,3,Inf,8,Inf,Inf,1,Inf,3,0,4,6,Inf,Inf,2,9,Inf,4,0,3,Inf,Inf,Inf,Inf,8,6,3,0),8,8)
