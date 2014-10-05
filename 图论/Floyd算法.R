@@ -1,5 +1,6 @@
 ##Floyd算法 是图论最短路问题3算法中经典算法之一
-function(M){
+##完成的太仓促了 很多说明还没有时间写，希望大家一起啊
+Floyd<- function(M){
     M初始<- M
     M初始
 n= nrow(M)
