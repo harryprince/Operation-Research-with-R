@@ -7,4 +7,4 @@ Operational Research with R ##运筹学与R的最佳实践
 
 2.排队论：M/M/1模型在R中的实现（Queue包）
 
-3.线性规划问题 案例
+3.线性规划问题：单纯形法 案例
