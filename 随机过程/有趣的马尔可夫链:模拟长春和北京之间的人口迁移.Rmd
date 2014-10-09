@@ -90,6 +90,8 @@ qplot(time, Changchun_Population, main="the evolution of Changchun population")
 1. 可以进一步通过调查确定长春和北京之间人口迁移的概率
 2. 进一步讨论齐次、非齐次等情况
 
+[网页版](http://htmlpreview.github.io/?https://github.com/harryprince/harryprince.github.io/blob/master/有趣的马尔可夫链%20模拟长春和北京之间的人口迁移.html)
+
 
 
 
