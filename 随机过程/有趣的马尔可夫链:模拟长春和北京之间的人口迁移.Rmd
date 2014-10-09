@@ -1,0 +1,99 @@
+---
+title: "有趣的马尔可夫链:模拟长春和北京之间的人口迁移"
+author: "HarryZhu"
+date: "October 9, 2014"
+output: html_document
+---
+
+
+## 有趣的 [markov chain](https://en.wikipedia.org/wiki/Markov_chain) [马尔可夫链](http://setosa.io/blog/2014/07/26/markov-chains/)
+![马尔可夫](https://upload.wikimedia.org/wikipedia/commons/2/2b/Markovkate_01.svg)
+
+上标```m,n```表示开始和结束的时间
+
+下标```i,j```表示对应上述时间的状态(比如人口数量、雾霾情况)
+
+```k```为某个中间时刻
+
+在```m```时刻状态```i```转移到状态```j```的条件概率矩阵叫作状态转移概率;形如:
+
+
+```{r,echo=TRUE}
+状态转移矩阵 <- matrix(c(0.9, 0.1, 0.2, 0.8), 2, 2)
+状态转移矩阵
+```
+假设初始状态
+```{r,echo=TRUE}
+初始状态 <- matrix(c(2000, 400))
+初始状态
+```
+* 头疼的概念
+
+* one-step 状态转移矩阵sition probability 某一步转移概率
+
+$${P_{ij}}^{(m,m+1)} = \sum {{P_{ik}}^{(m,l)}{P_{kj}}^{(l,n)}}$$
+
+* time interval = ```n``` - ```m``` 时间间隔
+
+* homogenious situation 齐次代表 方块矩阵
+
+$${P_{ij}}^{(m,n+1)} ={P_{ij}}$$ 
+
+
+
+上标```m,m+1```表示时间
+下标```ij```表示对应物质的状态
+```k```为中间时刻
+
+* 开始编程！！！ markov方程登场
+```{r,eval=TRUE}
+
+markov <- function(状态转移矩阵,终止时间,初始状态){  
+起始时间 <- 1
+markov <- 状态转移矩阵 %*% 初始状态
+markovChain<-matrix(rep(0,终止时间),2,(终止时间))
+markovChain[1,1]<-初始状态[1,1]
+markovChain[2,1]<-初始状态[2,1]
+for (转移次数 in 起始时间:终止时间) {
+    markov <- 状态转移矩阵 %*% markov
+    markovChain[1,转移次数]<-markov[1,1]
+    markovChain[2,转移次数]<-markov[2,1]
+} 
+ return(markovChain)
+}
+```
+* 模拟长春和北京的人口迁移
+假设长春初始有400万人,北京有2000万人
+```{r}
+状态转移矩阵 <- matrix(c(0.99, 0.01, 0.02, 0.98), 2, 2)
+终止时间 <- 1000
+初始状态 <- matrix(c(2000, 400))
+
+马尔可夫链 <- markov(状态转移矩阵, 终止时间, 初始状态)
+time <- 1:终止时间
+Capital_Population <- 马尔可夫链[1, ] 
+Changchun_Population <-马尔可夫链[2, ]
+```
+* 数据可视化
+```{r,echo=TRUE}
+library(ggplot2)
+qplot(time,Capital_Population,main ="the evolution of capital population" )
+```
+* 解释：显然首都人口将保持在1600万人
+```{r,echo=TRUE}
+qplot(time, Changchun_Population, main="the evolution of Changchun population")
+```
+* 解释：显然长春人口将保持在800万人
+
+* 可以提高的地方
+1. 可以进一步通过调查确定长春和北京之间人口迁移的概率
+2. 进一步讨论齐次、非齐次等情况
+
+
+
+
+
+
+
+
+
