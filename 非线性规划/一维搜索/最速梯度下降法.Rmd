@@ -1,0 +1,59 @@
+---
+title: "最速梯度下降法"
+author: "HarryZhu"
+date: "October 10, 2014"
+output: html_document
+---
+* 算法说明
+
+梯度下降法是世界上最古老的极值计算方法。
+
+* 算法的思想
+
+通过解析法 对原函数求导，相减迭代收敛到一个小范围
+
+设置：步长；迭代精度
+
+迭代方法：新函数值<- 原函数值 - 导函数值
+
+检验条件： 新函数值-原函数< 迭代精度
+
+![梯度下降法](http://img.my.csdn.net/uploads/201212/11/1355202600_3929.png)
+
+```{r, echo=TRUE}
+  迭代精度<-0.001
+  迭代步长<-0.01# 初始化
+  x = rep(0,1/迭代精度)
+  y0 = x^2-3*x-2*(x^3) ##目标函数
+y1 = x ##中间变量
+```
+
+```{r, echo=TRUE}
+for(i in 1:(1/迭代精度))
+  {
+    x[i+1] <- x[i]-迭代步长*(2*x[i]-3);##迭代方法
+    y1[i]=x[i+1]^2-3*x[i+1]-6*x[i+1]^2;
+  
+    if (abs(y1[i]-y0[i])<迭代精度){break}   # ，结束迭代
+   y0[i] <- y1[i]
+    i = i+1
+     ## //更新迭代的结果
+  }
+```
+
+```{r, eval=FALSE}
+cat("Min(f(x))=",y0)  
+cat("minx=",x)
+```
+
+```{r, echo=TRUE}
+library(ggplot2)
+t<- 1:((1/迭代精度)+1)
+y<- t^2-3*t-2*迭代步长*(t^3)
+qplot(t,x,geom=c('point','smooth'),colour = I("darkgreen"), fill = I("white"))
+qplot(t,y,geom=c('point','smooth'),colour = I("darkgreen"), fill = I("white"))
+
+
+
+```
+
