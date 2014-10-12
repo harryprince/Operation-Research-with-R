@@ -17,7 +17,7 @@ output: html_document
 
 中间规则层：B1 B2 B3
 
-最低指标层：C1 C2 C3 C4 C5
+最低指标层：C1 C2 C3 
 
 > wiki https://en.wikipedia.org/wiki/Analytic_Hierarchy_Process
 
