@@ -1,0 +1,7 @@
+---
+title: "闭包"
+author: "HarryZhu"
+date: "October 10, 2014"
+output: html_document
+---
+![2e](http://www3.cs.stonybrook.edu/~skiena/combinatorica/animations/anim/graphpower.gif)

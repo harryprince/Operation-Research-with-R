@@ -1,0 +1,35 @@
+---
+title: "图论"
+author: "HarryZhu"
+date: "October 12, 2014"
+output: html_document
+---
+
+没人看啊。。懒得更新了。
+
+你们赞一下吧。。
+```{r}
+library(igraph)
+a<-matrix(c(1,2,2,3,3,1,1,4,4,5),2,5)
+a
+you = graph(a)
+wu = graph(a,directed=FALSE)
+##有向图
+plot(you,vertex.size=1,edge.arrow.size=0.1)
+##无label图 无向图
+plot(wu,vertex.label=NA)
+
+##层次分析法的网络图
+cell<-c(1,2,1,3,1,4,2,5,2,6,2,7,3,8,3,9,3,10,4,11,4,12,4,13)
+label<-c("object","case1","case2","case3","rule1","rule2","rule3","rule1","rule2","rule3","rule1","rule2","rule3")
+t = graph(cell)
+plot(t,vertex.size=30,vertex.label= label)
+
+
+##显示出路线方向
+E(t)
+E(t)[c(1:14)]$label<-"M" 
+E(t)[c(1:14)]$color<- "red"
+
+plot(t,vertex.size=20,edge.arrow.size=1,vertex.label=label)
+```
