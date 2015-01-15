@@ -1,0 +1,11 @@
+---
+title: "安装OpenCV走过的弯路"
+author: "HarryZhu"
+date: "January 15, 2015"
+output: html_document
+---
+
+OpenCV的安装,千万不要安装官方网站的介绍来做,太坑爹.你需要安装一大堆无关的软件,而不是直接切入主题!
+我就不抱怨在windows下还要安装Python,Visual Studio等等10几个软体,苍天啊安装了3天了啊！
+
+[拯救OpenCV开发者的良心教程](http://tilomitra.com/opencv-on-mac-osx/#comment-12774)
