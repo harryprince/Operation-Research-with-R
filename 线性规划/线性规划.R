@@ -8,7 +8,6 @@
 ##然后加载这个包
 library(Rglpk)
 ##正式工作##########################
-<<<<<<< HEAD
 ##价值系数Xi向量 a numeric vector representing the objective coefficients
 obj <- c(3,2,2.9)
 ##费用矩阵 a numeric vector or a matrix of constraint coefficients.
